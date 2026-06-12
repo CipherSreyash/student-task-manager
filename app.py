@@ -209,36 +209,28 @@ def edit_student(student_id):
 # Update student
 @app.route('/update_student/<int:student_id>', methods=['POST'])
 def update_student(student_id):
-
-    # Check user login
     if 'user_id' not in session:
         return redirect('/login')
     
+    # Retrieve all form data
     first_name = request.form['first_name']
     last_name = request.form['last_name']
+    gender = request.form['gender']
+    mobile_number = request.form['mobile_number']
+    email = request.form['email']
+    course_name = request.form['course_name']
 
     connection = get_database_connection()
-    cursor = connection.cursor(dictionary=True)
+    cursor = connection.cursor()
 
     query = """
         UPDATE students
-        SET
-            first_name = %s,
-            last_name = %s
+        SET first_name = %s, last_name = %s, gender = %s, 
+            mobile_number = %s, email = %s, course_name = %s
         WHERE student_id = %s
     """
-
-    cursor.execute(
-        query,
-        (
-            first_name,
-            last_name,
-            student_id
-        )
-    )
-
+    cursor.execute(query, (first_name, last_name, gender, mobile_number, email, course_name, student_id))
     connection.commit()
-
     cursor.close()
     connection.close()
 
@@ -246,9 +238,9 @@ def update_student(student_id):
 
 # delete student
 @app.route('/delete_student/<int:student_id>')
+# Change this route in app.py
+@app.route('/delete_student/<int:student_id>', methods=['POST'])
 def delete_student(student_id):
-
-    # Check user login
     if 'user_id' not in session:
         return redirect('/login')
 
@@ -257,7 +249,6 @@ def delete_student(student_id):
     query = "DELETE FROM students WHERE student_id = %s"
     cursor.execute(query, (student_id,))
     connection.commit()
-
     cursor.close()
     connection.close()
 

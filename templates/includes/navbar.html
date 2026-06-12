@@ -6,61 +6,67 @@
             Student Task Manager
         </a>
 
-        <div class="navbar-nav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <a class="nav-link" href="/">
-                Dashboard
-            </a>
+        <div class="collapse navbar-collapse" id="mainNavbar">
 
-            <a class="nav-link" href="/students">
-                Students
-            </a>
+            <div class="navbar-nav me-auto">
 
-            <a class="nav-link" href="/add_student/">
-                Add Student
-            </a>
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">
+                    Dashboard
+                </a>
 
-            <a class="nav-link" href="/attendance">
-                Attendance
-            </a>
+                <a class="nav-link {% if request.path == '/students' %}active{% endif %}" href="/students">
+                    Students
+                </a>
 
-            <a class="nav-link" href="/attendance_report">
-                Attendance Report
-            </a>
+                <a class="nav-link {% if request.path == '/add_student/' %}active{% endif %}" href="/add_student/">
+                    Add Student
+                </a>
 
-            <a class="nav-link" href="/attendance_summary">
-                Attendance Summary
-            </a>
+                <a class="nav-link {% if request.path == '/attendance' %}active{% endif %}" href="/attendance">
+                    Attendance
+                </a>
 
-            <a class="nav-link" href="/tasks">
-                Tasks
-            </a>
+                <a class="nav-link {% if request.path == '/attendance_report' %}active{% endif %}" href="/attendance_report">
+                    Attendance Report
+                </a>
 
-            <a class="nav-link" href="/add_task">
-                Add Task
-            </a>
+                <a class="nav-link {% if request.path == '/attendance_summary' %}active{% endif %}" href="/attendance_summary">
+                    Attendance Summary
+                </a>
 
-            <a class="nav-link" href="/assign_task">
-                Assign Task
-            </a>
+                <a class="nav-link {% if request.path == '/tasks' %}active{% endif %}" href="/tasks">
+                    Tasks
+                </a>
 
-            <a class="nav-link" href="/student_tasks">
-                Student Tasks
-            </a>
+                <a class="nav-link {% if request.path == '/add_task' %}active{% endif %}" href="/add_task">
+                    Add Task
+                </a>
 
-            <a class="nav-link" href="/performance_report">
-                Performance Report
-            </a>
+                <a class="nav-link {% if request.path == '/assign_task' %}active{% endif %}" href="/assign_task">
+                    Assign Task
+                </a>
 
-        </div>
+                <a class="nav-link {% if request.path == '/student_tasks' %}active{% endif %}" href="/student_tasks">
+                    Student Tasks
+                </a>
 
-        <div class="navbar-nav ms-auto">
+                <a class="nav-link {% if request.path == '/performance_report' %}active{% endif %}" href="/performance_report">
+                    Performance Report
+                </a>
 
-            <a class="nav-link text-warning" href="/logout">
+            </div>
 
-                Logout
+            <div class="navbar-nav ms-auto">
 
-            </a>
+                <a class="nav-link text-warning" href="/logout">
+                    Logout
+                </a>
+
+            </div>
 
         </div>
 

@@ -68,8 +68,7 @@ curdate()
 curdate()
 );
 
-select * from students;
-drop table students;
+use student_task_manager;
 
 CREATE TABLE attendance(
 attendance_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,7 +79,7 @@ FOREIGN KEY (student_id)
 REFERENCES students(student_id)
 );
 
-show tables;
+use student_task_manager;
 
 CREATE TABLE tasks
 (
@@ -103,7 +102,7 @@ VALUES
 100
 );
 
-SELECT * FROM tasks;
+use student_task_manager;
 
 CREATE TABLE student_tasks
 (
@@ -118,7 +117,7 @@ FOREIGN KEY (task_id)
 REFERENCES tasks(task_id)
 );
 
-show tables; 
+use student_task_manager;
 
 ALTER TABLE student_tasks
 ADD COLUMN submission_status VARCHAR(50);
@@ -129,3 +128,32 @@ ALTER TABLE student_tasks
 ADD COLUMN remarks TEXT;
 
 describe student_tasks;
+
+use student_task_manager;
+
+CREATE TABLE users
+(
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100),
+    password VARCHAR(100),
+    full_name VARCHAR(200)
+);
+
+INSERT INTO users
+(
+    username,
+    password,
+    full_name
+)
+VALUES
+(
+    'admin',
+    'admin123',
+    'System Administrator'
+);
+
+show tables;
+
+SELECT * FROM students;
+SELECT * FROM tasks;
+SELECT * FROM users;
